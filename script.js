@@ -27,10 +27,18 @@ function createCard({destinationName, locName, photoUrl, descr}){
         <h5 class="card-title">${destinationName}</h5>
         <p class="card-text">${locName}</p>
         ${descr ? `<p class="card-text">${descr}</p>` : ''}
-        <button type="button" class="btn btn-info">Edit</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" btn_type="edit" class="btn btn-info">Edit</button>
+        <button type="button" btn_type="delete" class="btn btn-danger">Delete</button>
     </div>
 `;
 
     return card;
 }
+
+cards_container.addEventListener("click", (evt) => {
+    const clickedEvent = evt.target;
+
+    if (clickedEvent.getAttribute("btn_type") === "delete"){
+        clickedEvent.parentElement.parentElement.remove();
+    }
+})
