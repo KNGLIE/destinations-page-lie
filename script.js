@@ -41,4 +41,31 @@ cards_container.addEventListener("click", (evt) => {
     if (clickedEvent.getAttribute("btn_type") === "delete"){
         clickedEvent.parentElement.parentElement.remove();
     }
+    else if (clickedEvent.getAttribute("btn_type") === "edit"){
+        handleEdit(clickedEvent);
+    }
 })
+
+function handleEdit(editBtn){
+    {
+        const cardBody = editBtn.parentElement.children;
+
+        const newDestination = prompt("Please input the new destination name");
+        const newLocation = prompt("Please input the new location");
+        const newUrl = prompt("Please input the new URL");
+        const newDescr = prompt("Please input the new description");
+
+        if (newDestination.trim() !== ""){
+            cardBody[0].textContent = newDestination;
+        }
+        if (newLocation.trim() !== ""){
+            cardBody[1].textContent = newLocation;
+        }
+        if (newUrl.trim() !== ""){
+            cardBody.previousSibling.setAttribute("src", newUrl);
+        }
+        if (newDescr.trim() !== ""){
+            cardBody[2].textContent = newDescr;
+        }
+    }
+}
